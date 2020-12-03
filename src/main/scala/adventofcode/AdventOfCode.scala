@@ -6,8 +6,11 @@ import adventofcode.second.PasswordPhilosophy
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
-    printDailyResult(1, day01)
-    printDailyResult(2, day02)
+    val dailyResults = List(
+      day01,
+      day02
+    )
+    dailyResults.zipWithIndex.foreach { case (dailyResult, index) => printDailyResult(index + 1, dailyResult) }
 
     println("\n---- Finish AdventOfCode 2020 -----")
   }
