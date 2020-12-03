@@ -2,10 +2,12 @@ package adventofcode
 
 import scala.io.Source
 import adventofcode.first.ExpenseReport
+import adventofcode.second.PasswordPhilosophy
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
     printDailyResult(1, day01)
+    printDailyResult(2, day02)
 
     println("\n---- Finish AdventOfCode 2020 -----")
   }
@@ -17,10 +19,18 @@ object AdventOfCode {
 
   private def day01() = {
     val inputs = loadInput("day01_1.txt").map(_.toInt).toList
-
     List(
       ExpenseReport.calculate(inputs),
       ExpenseReport.calculateTriple(inputs)
+    )
+  }
+
+  private def day02() = {
+    val inputs = loadInput("day02.txt").toList
+
+    List(
+      PasswordPhilosophy.countValidPassswords(inputs),
+      PasswordPhilosophy.countValidPassswordsPart2(inputs)
     )
   }
 
