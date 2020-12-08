@@ -5,6 +5,7 @@ import adventofcode.first.ExpenseReport
 import adventofcode.second.PasswordPhilosophy
 import adventofcode.third.TreeGrid
 import adventofcode.fourth.PassportControl
+import adventofcode.fifth.BoardingPassScanner
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
@@ -12,7 +13,8 @@ object AdventOfCode {
       day01,
       day02,
       day03,
-      day04
+      day04,
+      day05
     )
     dailyResults.zipWithIndex.foreach { case (dailyResult, index) => printDailyResult(index + 1, dailyResult) }
 
@@ -54,6 +56,14 @@ object AdventOfCode {
     val inputs = loadInput("day04.txt").toList
     List(
       PassportControl.countValidPassports(inputs)
+    )
+  }
+
+  private def day05() = {
+    val inputs = loadInput("day05.txt").toList
+    List(
+      BoardingPassScanner.highestSeatId(inputs),
+      BoardingPassScanner.findYourSeat(inputs)
     )
   }
 
