@@ -11,14 +11,21 @@ import adventofcode.sixth.CustomDeclarationForm
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
     val dailyResults = List(
-      day01,
-      day02,
-      day03,
-      day04,
-      day05,
-      day06
+      day01 _,
+      day02 _,
+      day03 _,
+      day04 _,
+      day05 _,
+      day06 _
     )
-    dailyResults.zipWithIndex.foreach { case (dailyResult, index) => printDailyResult(index + 1, dailyResult) }
+    dailyResults.zipWithIndex.foreach {
+      case (dayFn, index) => {
+        val dayIndex = index + 1
+        val inputs = loadInput("day" + "%02d".format(dayIndex) + ".txt")
+        val dayResult = dayFn.apply(inputs)
+        printDailyResult(dayIndex, dayResult)
+      }
+    }
 
     println("\n---- Finish AdventOfCode 2020 -----")
   }
@@ -28,25 +35,21 @@ object AdventOfCode {
     println(results.map(_.toString).mkString("\n"))
   }
 
-  private def day01() = {
-    val inputs = loadInput("day01.txt").map(_.toInt).toList
+  private def day01(inputs: List[String]) = {
     List(
       ExpenseReport.calculate(inputs),
       ExpenseReport.calculateTriple(inputs)
     )
   }
 
-  private def day02() = {
-    val inputs = loadInput("day02.txt").toList
-
+  private def day02(inputs: List[String]) = {
     List(
       PasswordPhilosophy.countValidPassswords(inputs),
       PasswordPhilosophy.countValidPassswordsPart2(inputs)
     )
   }
 
-  private def day03() = {
-    val inputs = loadInput("day03.txt").toList
+  private def day03(inputs: List[String]) = {
     val treeGrid = TreeGrid.create(inputs)
     List(
       treeGrid.countTreeWhileTraversing(),
@@ -54,31 +57,28 @@ object AdventOfCode {
     )
   }
 
-  private def day04() = {
-    val inputs = loadInput("day04.txt").toList
+  private def day04(inputs: List[String]) = {
     List(
       PassportControl.countValidPassports(inputs)
     )
   }
 
-  private def day05() = {
-    val inputs = loadInput("day05.txt").toList
+  private def day05(inputs: List[String]) = {
     List(
       BoardingPassScanner.highestSeatId(inputs),
       BoardingPassScanner.findYourSeat(inputs)
     )
   }
 
-    private def day06() = {
-    val inputs = loadInput("day06.txt").toList
+  private def day06(inputs: List[String]) = {
     List(
       CustomDeclarationForm.sumAllYesAnswersByAnyone(inputs),
-      CustomDeclarationForm.sumAllYesAnswerByEveryone(inputs),
+      CustomDeclarationForm.sumAllYesAnswerByEveryone(inputs)
     )
   }
 
-  private def loadInput(fileName: String): Iterator[String] = {
+  private def loadInput(fileName: String): List[String] = {
     val relativePath = s"puzzleinputs/$fileName"
-    Source.fromResource(relativePath).getLines()
+    Source.fromResource(relativePath).getLines().toList
   }
 }

@@ -5,13 +5,15 @@ object ExpenseReport {
   type Pair2020 = (Int, Int)
   type Triplet2020 = (Int, Int, Int)
 
-  def calculate(numbers: List[Int]): Option[Int] = {
+  def calculate(inputs: List[String]): Option[Int] = {
+    val numbers = inputs.map(_.toInt)
     findPairSummingUpTo2020(numbers).map {
       case (x, y) => x * y
     }
   }
 
-  def calculateTriple(numbers: List[Int]): Option[Int] = {
+  def calculateTriple(inputs: List[String]): Option[Int] = {
+    val numbers = inputs.map(_.toInt)
     findTripletSummingUpTo2020(numbers).map {
       case (x, y, z) => x * y * z
     }

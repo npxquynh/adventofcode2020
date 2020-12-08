@@ -18,7 +18,6 @@ object CustomDeclarationForm {
   private def countYesAnswerByEveryone(form: String): Int = {
     val totalPeople = form.split(" ").size
 
-    // TODO: immutable map might not be efficient
     val alphabets = 'a' to 'z'
     val answersEveryoneSaysYesTo = alphabets.map { char =>
       (char, form.count(_ == char))
