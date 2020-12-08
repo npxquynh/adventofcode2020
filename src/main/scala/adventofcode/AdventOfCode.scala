@@ -4,13 +4,15 @@ import scala.io.Source
 import adventofcode.first.ExpenseReport
 import adventofcode.second.PasswordPhilosophy
 import adventofcode.third.TreeGrid
+import adventofcode.fourth.PassportControl
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
     val dailyResults = List(
       day01,
       day02,
-      day03
+      day03,
+      day04
     )
     dailyResults.zipWithIndex.foreach { case (dailyResult, index) => printDailyResult(index + 1, dailyResult) }
 
@@ -45,6 +47,13 @@ object AdventOfCode {
     List(
       treeGrid.countTreeWhileTraversing(),
       treeGrid.countTreePartTwo()
+    )
+  }
+
+  private def day04() = {
+    val inputs = loadInput("day04.txt").toList
+    List(
+      PassportControl.countValidPassports(inputs)
     )
   }
 
