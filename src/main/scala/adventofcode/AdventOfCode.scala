@@ -3,12 +3,14 @@ package adventofcode
 import scala.io.Source
 import adventofcode.first.ExpenseReport
 import adventofcode.second.PasswordPhilosophy
+import adventofcode.third.TreeGrid
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
     val dailyResults = List(
       day01,
-      day02
+      day02,
+      day03
     )
     dailyResults.zipWithIndex.foreach { case (dailyResult, index) => printDailyResult(index + 1, dailyResult) }
 
@@ -21,7 +23,7 @@ object AdventOfCode {
   }
 
   private def day01() = {
-    val inputs = loadInput("day01_1.txt").map(_.toInt).toList
+    val inputs = loadInput("day01.txt").map(_.toInt).toList
     List(
       ExpenseReport.calculate(inputs),
       ExpenseReport.calculateTriple(inputs)
@@ -34,6 +36,15 @@ object AdventOfCode {
     List(
       PasswordPhilosophy.countValidPassswords(inputs),
       PasswordPhilosophy.countValidPassswordsPart2(inputs)
+    )
+  }
+
+  private def day03() = {
+    val inputs = loadInput("day03.txt").toList
+    val treeGrid = TreeGrid.create(inputs)
+    List(
+      treeGrid.countTreeWhileTraversing(),
+      treeGrid.countTreePartTwo()
     )
   }
 
