@@ -8,6 +8,7 @@ import adventofcode.fourth.PassportControl
 import adventofcode.fifth.BoardingPassScanner
 import adventofcode.sixth.CustomDeclarationForm
 import adventofcode.seventh.BagCounter
+import adventofcode.eighth.{BootCodeExecutor, BootCodeCorrector}
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
@@ -19,6 +20,7 @@ object AdventOfCode {
       day05 _,
       day06 _,
       day07 _,
+      day08 _,
     )
     dailyResults.zipWithIndex.foreach {
       case (dayFn, index) => {
@@ -83,6 +85,13 @@ object AdventOfCode {
     List(
       BagCounter.countOuterBags(inputs, "shiny gold"),
       BagCounter.countInnerBags(inputs, "shiny gold")
+    )
+  }
+
+  private def day08(inputs: List[String]) = {
+    List(
+      BootCodeExecutor.withInputs(inputs).execute(),
+      BootCodeCorrector.withInputs(inputs).bruteForceToFixInstructions()
     )
   }
 
