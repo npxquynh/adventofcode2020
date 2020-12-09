@@ -7,6 +7,7 @@ import adventofcode.third.TreeGrid
 import adventofcode.fourth.PassportControl
 import adventofcode.fifth.BoardingPassScanner
 import adventofcode.sixth.CustomDeclarationForm
+import adventofcode.seventh.BagCounter
 
 object AdventOfCode {
   def main(args: Array[String]): Unit = {
@@ -16,7 +17,8 @@ object AdventOfCode {
       day03 _,
       day04 _,
       day05 _,
-      day06 _
+      day06 _,
+      day07 _,
     )
     dailyResults.zipWithIndex.foreach {
       case (dayFn, index) => {
@@ -74,6 +76,13 @@ object AdventOfCode {
     List(
       CustomDeclarationForm.sumAllYesAnswersByAnyone(inputs),
       CustomDeclarationForm.sumAllYesAnswerByEveryone(inputs)
+    )
+  }
+
+  private def day07(inputs: List[String]) = {
+    List(
+      BagCounter.countOuterBags(inputs, "shiny gold"),
+      BagCounter.countInnerBags(inputs, "shiny gold")
     )
   }
 
